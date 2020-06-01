@@ -31,6 +31,9 @@
     </view>
     <view class="goods-box">
         <checkbox-group bindchange="changeCheck">
+            <view wx:if="{{list==''}}" class="image_box">
+                <image mode="widthFill" src="../../../assets/image/new_cart.png"/>
+            </view>
             <view class="goods-item mx-1px-bottom" wx:for="{{list}}" wx:key="index">
                 <view class="input">
                     <label class="checkbox">
@@ -49,7 +52,7 @@
                             {{item.color}} <span wx:if="{{item.color && item.size}}">,</span> {{item.size}}
                         </view>
                         <view class="money">
-                            ￥{{item.total}}
+                            ￥{{item.newTotal}}
                         </view>
                     </view>
                     <view class="mun-box">
@@ -76,7 +79,7 @@
             <text>全选</text>
         </label>
         <view class="money-box">
-            商品总计：<text>￥{{select_products.total}}</text>
+            商品总计：<text>￥{{coustMoney}}</text>
         </view>
         <button class="num-box" bindtap="order" loading="{{loading}}">
             结算<text>{{'('+ select_products.count + ')' || 0}}</text>
@@ -109,9 +112,9 @@
                                     <view class="text-box" >
                                         <view class="text">
                                             <span class="money" wx:if="{{item.action_type.type == 'cash'}}">￥</span>
-                                            <span class="num">{{ item.action_type.value }}</span>
-
-                                            <span class="money" wx:if="{{item.action_type.type == 'discount'}}">折</span>
+                                            <span class="num" class="num" wx:if="{{item.action_type.type == 'cash'}}">{{ item.action_type.value }}</span>
+                                            <span class="num" wx:if="{{item.action_type.value<1}}">{{item.action_type.value*10}}</span>
+                                            <span class="money" wx:if="{{item.action_type.value<1}}">折</span>
                                         </view>
                                         <span class="label text">{{ item.label }}</span>
                                     </view>

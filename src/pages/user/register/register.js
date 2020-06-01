@@ -7,6 +7,7 @@ Page({
         open_id: ''
     },
     onLoad(e){
+        
         if (e.url) {
             this.setData({
                 url: decodeURIComponent(e.url)
@@ -29,11 +30,16 @@ Page({
     },
     // 利用code登录
     autoLogin(code) {
-        console.log(code);
         sandBox.post({
             api: 'api/oauth/MiniProgramLogin',
             data: {
-                code: code
+                code: code,
+                open_type:'miniprogram',
+                shop_id: cookieStorage.get('shop_id') || '',
+                agent_code: cookieStorage.get('coupon_agent_code') || cookieStorage.get('agent_code') || '',
+                clerk_id: cookieStorage.get('clerk_id') || '',
+                agent_code_time: cookieStorage.get('agent_code_time') || '',
+                shop_id_time: cookieStorage.get('shop_id_time') || '',
             },
         }).then(res => {
             if (res.statusCode == 200) {
@@ -46,12 +52,16 @@ Page({
                     cookieStorage.set('open_id', res.data.open_id);
                     wx.hideLoading();
                 }
+                // var res={
+                //     'status':true,
+                //     'data':res
+                //  }
                 // 如果接口返回token就直接登录，如果没有则弹出授权
                 if (res.data && res.data.access_token) {
                     wx.hideLoading();
                     var access_token = res.data.token_type + ' ' + res.data.access_token;
                     var expires_in = res.data.expires_in || 315360000;
-                    cookieStorage.set("user_token", access_token, expires_in);
+                     cookieStorage.set("user_token", access_token, expires_in);
                     // 判断来源
                     if (this.data.url) {
                         // 判断需要跳回的页面是否为tabbar页面
@@ -182,11 +192,19 @@ Page({
                 code: this.data.code,
                 encryptedData: e.detail.encryptedData,
                 iv: e.detail.iv,
-                open_id: this.data.open_id
+                open_id: this.data.open_id,
+                agent_code: cookieStorage.get('coupon_agent_code') || cookieStorage.get('agent_code') || '',
+                clerk_id: cookieStorage.get('clerk_id') || '',
+                agent_code_time: cookieStorage.get('agent_code_time') || '',
+                shop_id_time: cookieStorage.get('shop_id_time') || '',
             }
         }).then(res => {
             if (res.statusCode == 200) {
                 res = res.data;
+                // var res={
+                //     'status':true,
+                //     'data':res
+                //  }
                 if (res.data.access_token) {
                     var access_token = res.data.token_type + ' ' + res.data.access_token;
                     var expires_in = res.data.expires_in || 315360000;

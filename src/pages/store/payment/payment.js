@@ -68,11 +68,12 @@ Page({
         return new Promise((resolve, reject) => {
             wx.login({
                 success: (res) => {
-                    sandBox.get({
+                    let data= {
+                        code: res.code
+                    }
+                    sandBox.post({
                         api: 'api/oauth/miniprogram/openid',
-                        data: {
-                            code: res.code
-                        }
+                        data: data
 
                     }).then((res) => {
                         res = res.data
@@ -160,7 +161,6 @@ Page({
                     this.setData({
                         loading: false
                     })
-                    console.log(err);
                     if (err.errMsg == 'requestPayment:fail cancel') {
                         wx.redirectTo({
                             url: `/pages/order/detail/detail?no=${that.data.order_no}`

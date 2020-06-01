@@ -87,8 +87,8 @@ Page({
         });
         var types = [
             'valid',
-            'invalid',
-            'used'
+            'used',
+            'invalid'
         ][type]
 
         var token = cookieStorage.get('user_token') || '';
@@ -104,18 +104,19 @@ Page({
         }).then(res => {
             if (res.statusCode == 200) {
                 res = res.data;
-
                 if (res.status) {
                     var pages = res.meta.pagination;
                     var current_page = pages.current_page;
                     var total_pages = pages.total_pages;
                     var tabList = `tabList[${type}]`;
+                    console.log('tabList',tabList)
                     this.setData({
                         [`dataList.${type}[${page - 1}]`] : res.data,
                         [`${tabList}.init`]: true,
                         [`${tabList}.page`]: current_page,
                         [`${tabList}.more`]: current_page < total_pages,
                     })
+                    console.log('dataList',this.data.dataList)
                 } else {
                     wx.showModal({
                         content: res.message || '请求失败',

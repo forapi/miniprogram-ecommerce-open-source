@@ -10,7 +10,6 @@ Page({
         length: ''
     },
     onLoad(e) {
-        console.log(e);
         var order_no = e.order_no;
         this.initOrderComment(order_no);
         this.setData({
@@ -18,7 +17,6 @@ Page({
         })
     },
     upload(e){
-        console.log(e);
         var index = e.currentTarget.dataset.index;
         var that = this
         wx.chooseImage({
@@ -66,7 +64,6 @@ Page({
         });
     },
     deleteImg(e) {
-        console.log(e);
         var index = e.currentTarget.dataset.index;
         var idx = e.currentTarget.dataset.idx;
         var images = e.currentTarget.dataset.images;
@@ -74,7 +71,6 @@ Page({
         this.setData({
             [`orderData.items[${index}].upload_images` ]: images
         })
-        console.log(images);
     },
     allowComment() {
         if (this.data.orderData.items && this.data.orderData.items.length) {
@@ -105,7 +101,7 @@ Page({
             this.postSubmit(comments);
         } else {
             wx.showModal({
-                content:"所有订单请填写完",
+                content:"最少填写五个字",
                 showCancel:false
             });
         }
@@ -130,11 +126,12 @@ Page({
             if (res.statusCode == 200) {
                 res = res.data
                 if(res.status && comments.length){
+                    wx.hideLoading()
                     wx.showModal({
                         content: '评价成功',
                         showCancel: false,
                         success: res=>{
-                            if (res.confirm || (!res.cancel && !res.confirm)) {
+                            if (res.confirm) {
                                 wx.redirectTo({
                                     url: '/pages/order/comment/comment'
                                 })

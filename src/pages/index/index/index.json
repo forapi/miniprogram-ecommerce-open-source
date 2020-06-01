@@ -8,6 +8,7 @@
     "indexBanner": "../../../component/index-banner/index-banner",
     "indexCoupon": "../../../component/index-coupon/index-coupon",
     "indexSuit": "../../../component/index-suit/index-suit",
+    "indexGroupon": "../../../component/index-groupon/index-groupon",
     "indexNav": "../../../component/index-nav/index-nav",
     "indexCategory": "../../../component/index-category/index-category",
     "indexCube": "../../../component/index-cube/index-cube",

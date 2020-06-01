@@ -1,7 +1,45 @@
+@import "../../../assets/css/global";
 page{
   background: #F3F3F3;
 }
 #user{
+  .section-award{
+    background-color: #fff;
+  margin-bottom: 12px;
+    .award-header {
+          display: flex;
+          align-items: center;
+         justify-content: space-between;
+          padding: 11px 15px 9px;
+          .award-text {
+                font-size: 14px;
+                color: #000;
+                line-height: 20px;
+                font-weight: 700
+            }
+          .iconfont {
+                  font-size: 12px;
+                  color: #B3B3B3
+              }
+        }
+      .award-box {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            flex-wrap: wrap;
+            .item {
+                  width: 33.333333%;
+                  text-align: center;
+                  padding: 19px 0;
+                  font-size: 12px;
+                  color: #6A6A6A;
+                  .earnings {
+                        font-size: 20px;
+                        color: @mainColor;
+                    }
+              }
+        }
+  }
   .banner{
     position: relative;
     background: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/小程序/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83-%E8%83%8C%E6%99%AF.png") no-repeat;
@@ -124,6 +162,59 @@ page{
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+      }
+    }
+  }
+  .section-serve{
+    background-color: #ffffff;
+    margin-bottom: 12px;
+    .title{
+      padding: 11px 15px 9px 15px;
+      font-size: 14px;
+      color: #000000;
+      line-height: 20px;
+      font-weight: bold;
+    }
+    .server-box{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-wrap: wrap;
+      .item{
+        width:25%;
+        text-align: center;
+        padding:19px 0;
+        font-size: 12px;
+        color:#6A6A6A;
+        .iconfont{
+          font-size: 20px;
+          color: #ffffff;
+        }
+        .info{
+          display: inline-block;
+          width: 44px;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          background-color: #F25E62;
+          margin-bottom: 12px;
+          border-radius: 50%;
+        }
+        .mall{
+          background-color:#F8AB2C ;
+        }
+        .mi{
+          background-color:#5787ED;
+        }
+        .custom{
+          background-color: #37CEAC;
+        }
+        .center{
+          background-color:#5787ED ;
+        }
+        .team{
+          background-color:#D06D3C;
+        }
       }
     }
   }

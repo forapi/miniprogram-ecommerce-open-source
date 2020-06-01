@@ -2,6 +2,10 @@
   "pages": [
     "pages/index/index/index",
     "pages/index/classification/classification",
+    "pages/recharge/balance/balance",
+    "pages/recharge/index/index",
+    "pages/recharge/free/free",
+    "pages/recharge/success/success",
     "pages/store/search/search",
     "pages/store/list/list",
     "pages/store/detail/detail",
@@ -9,6 +13,7 @@
     "pages/store/cart/cart",
     "pages/store/order/order",
     "pages/store/orderGoods/orderGoods",
+    "pages/store/groups/groups",
     "pages/store/payment/payment",
     "pages/store/success/success",
     "pages/user/register/register",
@@ -19,20 +24,53 @@
     "pages/address/add/add",
     "pages/address/list/list",
     "pages/order/detail/detail",
+    "pages/bargain/index/index",
+    "pages/bargain/details/details",
+    "pages/bargain/list/list",
+    "pages/coupon/goods/goods",
     "pages/order/index/index",
+    "pages/order/comment/comment",
     "pages/order/search/search",
     "pages/order/evaluate/evaluate",
+    "pages/order/express/express",
     "pages/favorite/index/index",
+    "pages/point/index/index",
+    "pages/point/about/about",
+    "pages/distribution/cash/cash",
+    "pages/distribution/applyDistribution/applyDistribution",
+    "pages/distribution/cashRecord/cashRecord",
+    "pages/distribution/coupon/coupon",
+    "pages/distribution/distributionCenter/distributionCenter",
+    "pages/distribution/myReceive/myReceive",
+    "pages/distribution/offDetail/offDetail",
+    "pages/distribution/onDetail/onDetail",
+    "pages/distribution/order/order",
+    "pages/distribution/pusher/pusher",
+    "pages/distribution/pusherOrder/pusherOrder",
+    "pages/distribution/sensus/sensus",
+    "pages/distribution/shareImg/shareImg",
+    "pages/distribution/spread/spread",
+    "pages/distribution/vipManage/vipManage",
     "pages/coupon/index/index",
-    "pages/index/microPages/microPages",
-    "pages/coupon/onDetail/onDetail"
+    "pages/coupon/onDetail/onDetail",
+    "pages/link/link/link",
+    "pages/afterSales/index/index",
+    "pages/afterSales/detail/detail",
+    "pages/afterSales/apply/apply",
+    "pages/afterSales/retreat/retreat"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ff2741",
-    "navigationBarTitleText": "商城首页",
-    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#F3F3F3"
+  },
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.2.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
   },
   "tabBar": {
     "backgroundColor": "#fff",
@@ -51,6 +89,12 @@
         "text": "分类",
         "iconPath": "assets/image/class.png",
         "selectedIconPath": "assets/image/class-r.png"
+      },
+      {
+        "pagePath":"pages/store/cart/cart",
+        "text":"购物车",
+        "iconPath":"assets/image/card.png",
+        "selectedIconPath":"assets/image/card-r.png"
       },
       {
         "pagePath": "pages/user/user/user",
